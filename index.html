@@ -88,7 +88,7 @@
 
   <!-- Sign-Up Form -->
   <section>
-    <form method="post" action="https://sendfox.com/form/m8z62m/3epeq0" class="sendfox-form" id="3epeq0" data-async="true" data-recaptcha="true">
+    <form method="post" action="https://sendfox.com/form/m8z62m/3epeq0?redirect=https://avequipmentsuppliers.com/#success" class="sendfox-form" id="3epeq0" data-async="true" data-recaptcha="true">
       <p>
         <input type="email" id="sendfox_form_email" placeholder="Your email address" name="email" required />
       </p>
@@ -99,10 +99,30 @@
       <p>
         <button type="submit">Notify Me!</button>
       </p>
+
+      <div id="success-message" style="display: none; color: green; margin-top: 20px;" aria-live="polite">
+        You're in!
+      </div>
+
     </form>
     <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
   </section>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.location.hash === "#success") {
+      const successMessage = document.getElementById("success-message");
+      if (successMessage) {
+        successMessage.style.display = "block";
+        setTimeout(() => {
+          successMessage.style.display = "none";
+          window.history.replaceState(null, null, window.location.pathname); // Remove #success from URL
+        }, 5000); // Adjust the time as needed
+      }
+    }
+  });
+</script>
 
 </body>
 
